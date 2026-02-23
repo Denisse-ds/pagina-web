@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+     font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --color-principal: #83c587;
+    --color-secundario: #577b62;
+    --color-fondo: #e6ffe8;
+    --color-texto: #515151;
+}
+
+.cv-container{
+    display: flex;
+    gap: 20px;
+    
+}
+
+aside{
+    background-color: var(--color-fondo);
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgb(0, 0, 0);
+    margin: 10px;
+   
+}
+
+h1{
+    font-size: 20px;
+}
+h2{
+    border-bottom: 2px solid var(--color-secundario);
+    margin: 10px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-header{
+    text-align: center;
+    margin: 10px;
+
+}
+
+.photo-title-content{
+    display: flex;
+    margin: 10px;
+    background-color: var(--color-principal);
+    border-radius: 10px;
+        align-content: center;
+    align-items: center;
+}
+
+.profile-photo img{
+    width: 100px;
+    height: 100px;
+    max-width: 250px;
+    margin: 10px;
+}
+
+.sidebar-section{
+    border-radius: 10px;
+    margin: 10px;
+    height: auto;
+}
+
+.sidebar-header h1,
+.sidebar-header p {
+   text-align: left;
+}
+
+.contact-list li{
+    margin-bottom: 10px;
+   background-color: var(--color-principal);
+    padding: 5px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    transition: all 0.5s ease;
+}
+
+.contact-list li:hover{
+  background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+.skills-list{
+   margin: 10px;
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   flex-wrap: wrap;
+   text-align: center;
+   cursor: pointer;
+}
+
+.skills-list li{
+    background-color: var(--color-principal);
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+     transition: all 0.5s ease;
+}
+
+.skills-list li:hover{
+      background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+
+.languages-list{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.languages-list li{
+    background-color: var(--color-principal);
+    border-radius: 10px;
+    padding: 5px 5px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    transition: all 0.5s ease;
+}
+.languages-list li:hover{
+    background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+main{
+    background-color: var(--color-fondo);
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    margin: 10px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+}
+
+.content-section{
+   margin: 10px;
+}
+
+
+
+.content-me{
+    background-color: var(--color-principal);
+    border-radius: 10px;
+      box-shadow: 0 5px 5px rgb(0, 0, 0);
+      cursor: pointer;
+      transition: all 0.5s ease;
+}
+
+.content-me:hover{
+     background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+.experience-item{
+    background-color: var(--color-principal);
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.5s ease;
+}
+
+.experience-item:hover{
+     background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+.project-item{
+    background-color: var(--color-principal);
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.project-item:hover{
+     background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+.hobbys{
+    background-color: var(--color-principal);
+    border-radius: 10px;
+     box-shadow: 0 5px 5px rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.hobbys:hover{
+     background-color: var(--color-secundario);
+  transform: translateY(2px);
+}
+
+
+footer{
+    margin-top: 20px;
+    align-content: center;
+    text-align: center;
+    background-color: var(--color-fondo);
+    width: auto;
+    height: 100px;
+}
+
+@media (max-width: 868px){
+    .photo-title-content h1, .photo-title-content p{
+       font-size: 15px;
+
+    }
+}
+
+@media (max-width: 755px){
+    .photo-title-content{
+        display: flex;
+    }
+ .cv-container{
+    display: block;
+ }
+
+ .main-content{
+    margin-top: 20px;
+ }
+
+}
