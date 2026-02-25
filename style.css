@@ -1,40 +1,83 @@
+/* ===================================
+   RESET BÁSICO DE LA PÁGINA
+   =================================== */
+
+/* Reset básico: quitamos márgenes y paddings por defecto */
 *{
     margin: 0;
     padding: 0;
-     font-family: "Montserrat", sans-serif;
+    box-sizing: border-box; /* Importante: hace que el width incluya padding y border */
 }
 
+body{
+    font-family: "Montserrat", sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+    min-width: 300px; /* Evita que el layout se rompa en pantallas extremadamente pequeñas */
+}
+
+/* ===================================
+   VARIABLES GLOBALES
+=================================== */
+
 :root {
+    /* Uso de variables CSS  */
     --color-principal: #83c587;
     --color-secundario: #577b62;
     --color-fondo: #e6ffe8;
     --color-texto: #515151;
+    --radius: 15px;
+    --shadow: 0 5px 5px rgba(0, 0, 0); /* Sombra reutilizable*/
 }
+
+/* ===================================
+   CONTENEDOR PRINCIPAL
+=================================== */
 
 .cv-container{
-    display: flex;
-    gap: 20px;
-    
+    overflow: hidden; /* prevenir desbordamientos */
+    display: flex; /* Layout principal con flexbox */
+    max-width: 1200px; /* Limita el crecimiento en pantallas grandes */
+    width: 95%; /* Permite margen lateral, ya que antes no lo permitia */
+    margin: 20px auto; /* Centrado horizontal con auto */
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: var(--color-fondo);
+    gap: 15px; /* Separación interna entre aside y main sin usar margins */
 }
+
+/* ===================================
+   ASIDE
+=================================== */
 
 aside{
-    background-color: var(--color-fondo);
-    border-radius: 15px;
-    box-shadow: 0 5px 10px rgb(0, 0, 0);
-    margin: 10px;
-   
+    flex: 0 0 40%; 
+    /* 
+       flex-grow: 0 (no crece)
+       flex-shrink: 0 (no se reduce)
+       flex-basis: 40% (ocupa exactamente 40%)
+       Esto fija el ancho relativo dentro del contenedor flex
+    */
+    border: 5px solid var(--color-secundario);
+    border-radius: var(--radius);
 }
 
+/* ===================================
+   TIPOGRAFÍA
+=================================== */
+
 h1{
-    font-size: 20px;
+     font-size: 1rem;
 }
+
 h2{
     border-bottom: 2px solid var(--color-secundario);
-    margin: 10px;
+    margin-bottom: 10px;
 }
 
 li{
-    list-style: none;
+    list-style: none; /* Se eliminan los bullets por diseño personalizado */
 }
 
 a{
@@ -42,191 +85,254 @@ a{
     color: black;
 }
 
-.sidebar-header{
-    text-align: center;
-    margin: 10px;
+/* ===================================
+   HEADER SIDEBAR
+=================================== */
 
+.sidebar-header{
+    margin: 10px;
 }
 
 .photo-title-content{
-    display: flex;
+    display: flex; /* Flex interno para alinear foto y texto */
+    align-items: center; 
     margin: 10px;
     background-color: var(--color-principal);
     border-radius: 10px;
-        align-content: center;
-    align-items: center;
+    gap: 10px; /* Separación  entre imagen y texto */
 }
+
+/* Imagen perfil */
+
 
 .profile-photo img{
     width: 100px;
     height: 100px;
-    max-width: 250px;
-    margin: 10px;
+    object-fit: cover;  /* object-fit evita deformación de la imagen 
+    manteniendo proporción dentro del contenedor fijo */
+    border-radius: 50%;
+    margin-left: 5px;
+    transition: transform 0.3s ease; /* Animación suave */
+    cursor: pointer;
 }
 
-.sidebar-section{
-    border-radius: 10px;
-    margin: 10px;
-    height: auto;
+.profile-photo img:hover{
+    transform: scale(0.9); /* Reduce tamaño visual */
 }
+
+/* Alineación específica */
 
 .sidebar-header h1,
-.sidebar-header p {
-   text-align: left;
+.sidebar-header p{
+    text-align: left;
 }
+
+/* ===================================
+   LISTAS SIDEBAR
+=================================== */
+
+.sidebar-section{
+    margin: 10px;
+}
+
+/* CONTACTO */
 
 .contact-list li{
     margin-bottom: 10px;
-   background-color: var(--color-principal);
-    padding: 5px 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 5px 5px rgb(0, 0, 0);
-    transition: all 0.5s ease;
 }
 
 .contact-list li:hover{
-  background-color: var(--color-secundario);
-  transform: translateY(2px);
+    background-color: var(--color-secundario);
+    transform: translateY(2px); /* Movimiento en Y */
 }
+
+/* HABILIDADES */
 
 .skills-list{
    margin: 10px;
    display: flex;
-   flex-direction: row;
+   flex-wrap: wrap;  /*  Permite que los elementos bajen de línea automáticamente*/
    gap: 10px;
-   flex-wrap: wrap;
    text-align: center;
-   cursor: pointer;
 }
 
-.skills-list li{
-    background-color: var(--color-principal);
-    box-shadow: 0 5px 5px rgb(0, 0, 0);
-    border-radius: 10px;
-    padding: 10px;
-     transition: all 0.5s ease;
-}
+
 
 .skills-list li:hover{
-      background-color: var(--color-secundario);
-  transform: translateY(2px);
+    background-color: var(--color-secundario);
+    transform: translateY(2px);
 }
 
+/* IDIOMAS */
 
 .languages-list{
     display: flex;
+    flex-wrap: wrap; /* Comportamiento similar al de skills */
     gap: 10px;
-    flex-wrap: wrap;
 }
 
+
+.languages-list li:hover{
+    background-color: var(--color-secundario);
+    transform: translateY(2px);
+}
+
+
+.contact-list li,
+.skills-list li,
 .languages-list li{
     background-color: var(--color-principal);
     border-radius: 10px;
-    padding: 5px 5px;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 5px 5px rgb(0, 0, 0);
-    transition: all 0.5s ease;
-}
-.languages-list li:hover{
-    background-color: var(--color-secundario);
-  transform: translateY(2px);
+    padding: 8px;
 }
 
+/* ===================================
+   CONTENIDO PRINCIPAL
+=================================== */
+
 main{
-    background-color: var(--color-fondo);
-    box-shadow: 0 5px 5px rgb(0, 0, 0);
-    margin: 10px;
-    border-radius: 15px;
-    flex-wrap: wrap;
+    flex: 1; /*  flex: 1 permite que el main ocupe todo el espacio restante
+       después de que el aside toma su 40% */
+    padding: 10px;
 }
 
 .content-section{
    margin: 10px;
 }
 
-
-
-.content-me{
-    background-color: var(--color-principal);
-    border-radius: 10px;
-      box-shadow: 0 5px 5px rgb(0, 0, 0);
-      cursor: pointer;
-      transition: all 0.5s ease;
-}
-
-.content-me:hover{
-     background-color: var(--color-secundario);
-  transform: translateY(2px);
-}
-
-.experience-item{
-    background-color: var(--color-principal);
-    border-radius: 10px;
-    box-shadow: 0 5px 5px rgb(0, 0, 0);
-    cursor: pointer;
+.content-me p,
+.experience-item p,
+.experience-item h3,
+.project-item p,
+.project-item h3,
+.hobbys p{
     margin: 10px;
-    transition: all 0.5s ease;
 }
 
-.experience-item:hover{
-     background-color: var(--color-secundario);
-  transform: translateY(2px);
-}
-
-.project-item{
-    background-color: var(--color-principal);
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0 5px 5px rgb(0, 0, 0);
-    cursor: pointer;
-    transition: all 0.5s ease;
-}
-.project-item:hover{
-     background-color: var(--color-secundario);
-  transform: translateY(2px);
-}
-
+/* Aplicamos clase a tus elementos */
+.content-me,
+.experience-item,
+.project-item,
 .hobbys{
     background-color: var(--color-principal);
     border-radius: 10px;
-     box-shadow: 0 5px 5px rgb(0, 0, 0);
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 15px;
     cursor: pointer;
-    transition: all 0.5s ease;
 }
 
+.content-me:hover,
+.experience-item:hover,
+.project-item:hover,
 .hobbys:hover{
-     background-color: var(--color-secundario);
-  transform: translateY(2px);
+    background-color: var(--color-secundario);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    
 }
 
+
+/* ===================================
+   FOOTER
+=================================== */
 
 footer{
-    margin-top: 20px;
-    align-content: center;
+margin-top: 50px; 
+text-align: center; 
+align-content: center; 
+background-color: var(--color-fondo); 
+padding: 20px;
+}
+
+/* ===================================
+   RESPONSIVE box-sizing
+=================================== */
+
+@media (min-width: 1200px){
+  .cv-container{
+    max-width: 1200px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 945px){
+  .photo-title-content{
+    flex-direction: column;  /*  Evita que imagen y texto queden apretados
+       en pantallas extremadamente pequeñas */
     text-align: center;
-    background-color: var(--color-fondo);
-    width: auto;
-    height: 100px;
+  }
+
+  .sidebar-header h1,
+  .sidebar-header p{
+    text-align: center;
+  }
 }
 
-@media (max-width: 868px){
-    .photo-title-content h1, .photo-title-content p{
-       font-size: 15px;
-
-    }
-}
-
+/* Móvil */
 @media (max-width: 755px){
-    .photo-title-content{
-        display: flex;
-    }
- .cv-container{
-    display: block;
- }
 
- .main-content{
+  body{
+    padding: 10px; /* Compensa cuando el contenedor pasa a columna */
+  }
+   .photo-title-content{
+    flex-direction: row;  /*  Evita que imagen y texto queden apretados
+       en pantallas extremadamente pequeñas */
+  }
+
+    .sidebar-header h1,
+  .sidebar-header p{
+    text-align: left;
+  }
+
+  .cv-container{
+    flex-direction: column;  /* pasa de estructura horizontal a vertical*/
+  }
+
+  aside{
+    flex: none; /* Se desactiva el comportamiento flex fijo, el que tenemos al comienzo*/
+    width: 100%; /* Ahora ocupa todo el ancho */
+  }
+
+  main{
+    width: 100%;
+  }
+
+  .main-content{
     margin-top: 20px;
- }
+  }
+
+  h1{
+    font-size: 18px;
+  }
+
+  h2,
+  h3{
+    font-size: 16px;
+  }
+
+  p,
+  li,
+  a{
+    font-size: 14px;
+  }
+}
+
+/* Móvil pequeño */
+@media (max-width: 390px){
+
+  .photo-title-content{
+    flex-direction: column;  /*  Evita que imagen y texto queden apretados
+       en pantallas extremadamente pequeñas */
+    text-align: center;
+  }
+
+  .sidebar-header h1,
+  .sidebar-header p{
+    text-align: center;
+  }
 
 }
